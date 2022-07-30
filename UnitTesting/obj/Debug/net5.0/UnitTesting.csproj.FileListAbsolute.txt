@@ -101,3 +101,4 @@ D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\UnitTe
 D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\UnitTesting\obj\Debug\net5.0\ref\UnitTesting.dll
 D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\UnitTesting\obj\Debug\net5.0\UnitTesting.pdb
 D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\UnitTesting\obj\Debug\net5.0\UnitTesting.genruntimeconfig.cache
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\UnitTesting\bin\Debug\net5.0\dados.csv

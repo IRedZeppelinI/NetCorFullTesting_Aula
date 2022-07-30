@@ -12,7 +12,7 @@ namespace UnitTesting
         IEnumerator<object[]> IEnumerable<object[]>.GetEnumerator()
         {
 
-            using (TextFieldParser parser = new TextFieldParser(@"C:\Users\SergioFontes\Downloads\XUnitTesting\UnitTesting\UnitTesting\dados.csv"))
+            using (TextFieldParser parser = new TextFieldParser("dados.csv"))
             {
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(";");
