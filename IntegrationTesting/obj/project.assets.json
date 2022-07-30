@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "coverlet.collector/3.0.2": {
         "type": "package",
         "build": {
@@ -2606,7 +2606,7 @@
       },
       "Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Lib.dll": {}
         },
@@ -2616,7 +2616,7 @@
       },
       "WebAppPipeline/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Lib": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5"
@@ -8255,7 +8255,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Microsoft.AspNetCore.Mvc.Testing >= 3.1.25",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "WebAppPipeline >= 1.0.0",
@@ -8289,15 +8289,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
             "D:\\Projects\\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\\Jenkins\\code1\\WebAppPipeline\\WebAppPipeline.csproj": {
               "projectPath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\\Jenkins\\code1\\WebAppPipeline\\WebAppPipeline.csproj"
@@ -8312,8 +8312,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Testing": {
             "target": "Package",

@@ -1,0 +1,12 @@
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\bin\Debug\net5.0\Lib.deps.json
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\bin\Debug\net5.0\Lib.dll
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\bin\Debug\net5.0\ref\Lib.dll
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\bin\Debug\net5.0\Lib.pdb
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.csproj.AssemblyReference.cache
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.AssemblyInfoInputs.cache
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.AssemblyInfo.cs
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.csproj.CoreCompileInputs.cache
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.dll
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\ref\Lib.dll
+D:\Projects\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\Jenkins\code1\Lib\obj\Debug\net5.0\Lib.pdb
