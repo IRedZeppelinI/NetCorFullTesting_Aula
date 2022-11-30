@@ -22,7 +22,7 @@ namespace FunctionalTesting
             lst.Add(new Individuo { Nome = "Sergio", Apelido = "Fontes", DataNasc = new DateTime(1998, 12, 23) });
             lst.Add(new Individuo { Nome = "Maria", Apelido = "Antunes", DataNasc = new DateTime(1998, 12, 23) });
 
-            lst.Add(new Individuo { Nome = "José", Apelido = "Januário", DataNasc = new DateTime(1998, 12, 23) });
+            lst.Add(new Individuo { Nome = "Jose", Apelido = "Januario", DataNasc = new DateTime(1998, 12, 23) });
 
             List<Individuo> modelo = Assert.IsAssignableFrom<List<Individuo>>(resultadoView.ViewData.Model);
 
