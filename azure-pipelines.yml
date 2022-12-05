@@ -25,6 +25,7 @@ steps:
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
     projectName: 'NetCorFullTesting'
+    scanReportTimeout: 5
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
