@@ -21,6 +21,10 @@ steps:
   inputs:
     command: 'test'
     projects: '**/UnitTesting/UnitTesting.csproj'
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'NetCorFullTesting'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
