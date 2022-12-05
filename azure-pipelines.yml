@@ -21,7 +21,7 @@ steps:
   inputs:
     command: 'test'
     projects: '**/UnitTesting/UnitTesting.csproj'
-- task: WhiteSource@21
+- task: mend@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
     projectName: 'NetCorFullTesting'
