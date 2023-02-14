@@ -23,4 +23,11 @@ steps:
   inputs:
     command: 'build'
     projects: '**/WebAppPipeline/WebAppPipeline.csproj'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/FunctionalTesting/FunctionalTesting.csproj'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/IntegrationTesting/IntegrationTesting.csproj'
