@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h68X5vEFryKWZ7knuriXQh4qn+9xxs/WDhancijA+A+kkfcQcPKtb0O6tHH+d0XKC3yvN10n588m0oxxSqobmg==",
+  "dgSpecHash": "fIjz8lD3cT1J7TGenwM3PHe0f8FMUsCjdbhoz4CCOUO3yPDg/ZYW1qPGPwFXxyimjnUhnf7fA9AfeorC/Atlxg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\\Jenkins\\code1\\IntegrationTesting\\IntegrationTesting.csproj",
+  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\IntegrationTesting\\IntegrationTesting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SergioFontes\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

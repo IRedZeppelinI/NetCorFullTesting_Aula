@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KRfxyEYOK4ARMGq3o82okMUG98egOHL3+Qh1ywQ6sJXOLR2qlbuxH4z+Xhxq3zeKM+sYcGbCGjVlcuXfNIXMjg==",
+  "dgSpecHash": "clpLm8YiFkfGWErj/K61QFx0YJ3F/TKJL5BpbO8Z9RvioJSxuZySfCRsyoc203IToTriShz3NTsBK8CAsvLvKg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CR_70221_2021_B\\Jenkins\\code1\\WebAppPipeline\\WebAppPipeline.csproj",
+  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\WebAppPipeline\\WebAppPipeline.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
