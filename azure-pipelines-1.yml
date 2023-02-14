@@ -7,10 +7,16 @@ pool:
 
 variables:
   solution: '**/*.sln'
+  web: '**/WebAppPipeline/WebAppPipeline.csproj'
   lib: '**/Lib/Lib.csproj'
-  unittest: '**/UnitTesting/UnitTesting.csproj'
+  unittests: '**/UnitTesting/UnitTesting.csproj'
+  functionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
+  integrationtests: '**/IntegrationTesting/IntegrationTesting.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  azureSubscription: 'WebAppAzurePipelineConnection'
+  appName: 'webpipeline'
+
 
 steps:
 - task: NuGetToolInstaller@1
@@ -26,12 +32,30 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/WebAppPipeline/WebAppPipeline.csproj'
+    projects: '$(web)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/FunctionalTesting/FunctionalTesting.csproj'
+    projects: '$(functionaltests)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/IntegrationTesting/IntegrationTesting.csproj'
+    projects: '$(integrationtests)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'WebAppPipeline'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: $(azureSubscription)
+    appType: 'webAppLinux'
+    appName: $(appName)
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|6.0'
