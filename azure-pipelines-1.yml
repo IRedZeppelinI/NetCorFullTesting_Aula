@@ -21,6 +21,6 @@ steps:
     projects: '$(lib)'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'test'
-    projects: '**/UnitTesting/UnitTesting.csproj'
+    command: 'build'
+    projects: '**/WebAppPipeline/WebAppPipeline.csproj'
 
