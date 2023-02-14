@@ -55,7 +55,7 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: $(azureSubscription)
-    appType: 'webAppWindows'
+    appType: 'webApp'
     appName: $(appName)
     package: '$(System.ArtifactsDirectory)/**/*.zip'
     runtimeStack: 'DOTNETCORE|6.0'
