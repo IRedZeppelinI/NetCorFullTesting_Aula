@@ -5,19 +5,16 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS publish
 WORKDIR /src
-COPY ["WebAppPipeline/WebAppPipeline.csproj", "WebAppPipeline/"]
-COPY ["Lib/Lib.csproj", "Lib/"]
-RUN dotnet restore "WebAppPipeline/WebAppPipeline.csproj"
 COPY . .
-WORKDIR "/src/WebAppPipeline"
-RUN dotnet build "WebAppPipeline.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "WebAppPipeline.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet restore WebAppPipeline.csproj
+RUN dotnet build WebAppPipeline.csproj -c Release -o /publish
+RUN dotnet publish WebAppPipeline.csproj -c Release -o /publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /src/bin/Release/net6.0/ .
+COPY  /wwwroot ./wwwroot
+
 ENTRYPOINT ["dotnet", "WebAppPipeline.dll"]
