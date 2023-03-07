@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS publish
 WORKDIR /src
 COPY . .
 RUN dotnet restore WebAppPipeline.csproj
-RUN dotnet build WebAppPipeline.csproj -c Release -o /publish/
+RUN dotnet build WebAppPipeline.csproj -c Release -o /build/
 RUN dotnet publish WebAppPipeline.csproj -c Release -o /publish/
 
 FROM base AS final
