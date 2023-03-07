@@ -11,10 +11,9 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\L" +
-    "ib", "Lib.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("WebAppPipeline, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\W" +
-    "ebAppPipeline", "WebAppPipeline.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Lib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib", "Lib.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("WebAppPipeline, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\WebAppP" +
+    "ipeline", "WebAppPipeline.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntegrationTesting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

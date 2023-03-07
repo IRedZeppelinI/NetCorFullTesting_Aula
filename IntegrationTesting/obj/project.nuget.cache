@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fIjz8lD3cT1J7TGenwM3PHe0f8FMUsCjdbhoz4CCOUO3yPDg/ZYW1qPGPwFXxyimjnUhnf7fA9AfeorC/Atlxg==",
+  "dgSpecHash": "fhPiQHT6MQQKQjkI+AI8ft1r9hWEoUL8YNlI5T9JH0E0NoVWgBbAG8QQVmNGy42I884+b6VzXH4OADdYzeFd9g==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\IntegrationTesting\\IntegrationTesting.csproj",
+  "projectFilePath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\IntegrationTesting\\IntegrationTesting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SergioFontes\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -49,6 +49,7 @@
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.testplatform.objectmodel\\16.9.4\\microsoft.testplatform.objectmodel.16.9.4.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.testplatform.testhost\\16.9.4\\microsoft.testplatform.testhost.16.9.4.nupkg.sha512",
+    "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.5\\microsoft.visualstudio.web.codegeneration.3.1.5.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.5\\microsoft.visualstudio.web.codegeneration.contracts.3.1.5.nupkg.sha512",
     "C:\\Users\\SergioFontes\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.5\\microsoft.visualstudio.web.codegeneration.core.3.1.5.nupkg.sha512",

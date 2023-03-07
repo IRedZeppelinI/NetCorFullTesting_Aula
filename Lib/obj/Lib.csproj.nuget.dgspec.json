@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\Lib\\Lib.csproj": {}
+    "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib\\Lib.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\Lib\\Lib.csproj": {
+    "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib\\Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\Lib\\Lib.csproj",
+        "projectUniqueName": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib\\Lib.csproj",
         "projectName": "Lib",
-        "projectPath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\Lib\\Lib.csproj",
+        "projectPath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib\\Lib.csproj",
         "packagesPath": "C:\\Users\\SergioFontes\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\Az400\\sessao 9\\code\\Lib\\obj\\",
+        "outputPath": "D:\\Projects\\AcademiaRumosFullStackDeveloper_CRE74282_2022_B\\APEAZ400\\code\\Lib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
