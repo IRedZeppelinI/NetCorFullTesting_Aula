@@ -21,6 +21,7 @@ variables:
   azuresubscrition: ''
   appName: ''
   containerregistryName: ''
+  artifactName: 'WebAppRelease'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -53,3 +54,14 @@ steps:
   inputs:
     command: 'test'
     projects: '$(integrationtest)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(artifactName)'
