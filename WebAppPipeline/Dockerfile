@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["WebAppPipeline/WebAppPipeline.csproj", "WebAppPipeline/"]
+COPY ["WebAppPipeline.csproj", "WebAppPipeline/"]
 COPY ["../Lib/Lib.csproj", "Lib/"]
 RUN dotnet restore "WebAppPipeline/WebAppPipeline.csproj"
 COPY . .
