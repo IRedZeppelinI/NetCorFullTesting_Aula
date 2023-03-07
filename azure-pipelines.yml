@@ -11,11 +11,11 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  web: ''
+  web: '**/WebAppPipeline/WebAppPipeline.csproj'
   lib: '**/Lib/Lib.csproj'
-  unittests: ''
-  functionaltests: ''
-  integrationtest: ''
+  unittests: '**/UnitTesting/UnitTesting.csproj'
+  functionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
+  integrationtest: '**/IntegrationTesting/IntegrationTesting.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   azuresubscrition: ''
@@ -37,3 +37,19 @@ steps:
   inputs:
     command: 'test'
     projects: '$(unittests)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(web)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(web)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(functionaltests)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(integrationtest)'
