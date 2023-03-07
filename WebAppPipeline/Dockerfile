@@ -12,9 +12,7 @@ RUN dotnet restore "WebAppPipeline/WebAppPipeline.csproj"
 COPY . .
 WORKDIR /src/
 RUN dotnet build "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "WebAppPipeline.csproj" -c Release -o /app/publish
+RUN dotnet publish "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /app/publish
 
 
 FROM base AS final
