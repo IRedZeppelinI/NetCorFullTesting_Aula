@@ -18,8 +18,8 @@ variables:
   integrationtest: '**/IntegrationTesting/IntegrationTesting.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  azuresubscrition: ''
-  appName: ''
+  azuresubscrition: 'DevOpsWebApp'
+  appName: 'devops1'
   containerregistryName: ''
   artifactName: 'WebAppRelease'
 
@@ -65,3 +65,11 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: '$(artifactName)'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '$(azuresubscrition)'
+    appType: 'webApp'
+    appName: '$(appName)'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|6.0'
