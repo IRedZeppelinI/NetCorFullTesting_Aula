@@ -10,9 +10,9 @@ WORKDIR /src
 COPY ["WebAppPipeline.csproj", "WebAppPipeline/"]
 RUN dotnet restore "WebAppPipeline/WebAppPipeline.csproj"
 COPY . .
-WORKDIR /src/
-RUN dotnet build "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /app/build
-RUN dotnet publish "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /app/publish
+WORKDIR /src
+RUN dotnet build "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /build
+RUN dotnet publish "WebAppPipeline/WebAppPipeline.csproj" -c Release -o /publish
 
 
 FROM base AS final
