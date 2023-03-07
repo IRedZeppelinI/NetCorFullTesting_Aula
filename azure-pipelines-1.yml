@@ -1,61 +1,39 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+resources:
+- repo: self
 
 variables:
-  solution: '**/*.sln'
-  web: '**/WebAppPipeline/WebAppPipeline.csproj'
-  lib: '**/Lib/Lib.csproj'
-  unittests: '**/UnitTesting/UnitTesting.csproj'
-  functionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
-  integrationtests: '**/IntegrationTesting/IntegrationTesting.csproj'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  azureSubscription: 'WebAppAzurePipelineConnection'
-  appName: 'webpipeline'
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '751f1b65-34c8-4bfa-b2ae-c54406883363'
+  imageRepository: 'devopswebapp'
+  containerRegistry: 'devopsrumos.azurecr.io'
+  dockerfilePath: '**/Dockerfile'
+  tag: '$(Build.BuildId)'
 
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
 
-steps:
-- task: NuGetToolInstaller@1
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(lib)'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '$(unittest)'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(web)'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '$(functionaltests)'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '$(integrationtests)'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'WebAppPipeline'
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: $(azureSubscription)
-    appType: 'webApp'
-    appName: $(appName)
-    package: '$(System.ArtifactsDirectory)/**/*.zip'
-    runtimeStack: 'DOTNETCORE|6.0'
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
