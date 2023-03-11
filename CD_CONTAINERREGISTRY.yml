@@ -2,8 +2,8 @@
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-#trigger:
-#- main
+trigger:
+ - none
 resources:
   pipelines:
     source: Net Core CI and Full Testing # The name of the pipeline referenced by this pipeline resource.
