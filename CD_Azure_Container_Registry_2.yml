@@ -10,7 +10,7 @@ variables:
 - name: dockerfilePath
   value: 'Dockerfile'
 - name: tag
-  value: '$(Build.BuildId)'
+  value: 'latest'
 - name: vmImageName
   value: 'ubuntu-latest'
 stages:
