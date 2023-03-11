@@ -1,8 +1,9 @@
 trigger:
-  branches:
-    include:
-    - Deploy
+  none
 resources:
+  pipelines:
+   - source: Net_Core_CI_Full_Testing
+   - trigger: true
   repositories:
   - repository: self
 variables:
