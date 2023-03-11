@@ -2,8 +2,12 @@
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- main
+#trigger:
+#- main
+resources:
+  pipelines:
+    source: Net Core CI and Full Testing # The name of the pipeline referenced by this pipeline resource.
+    trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
 
 resources:
 - repo: self
