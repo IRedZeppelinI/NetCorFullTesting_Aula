@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '751f1b65-34c8-4bfa-b2ae-c54406883363'
   imageRepository: 'devopswebapp'
   containerRegistry: 'devopsrumos.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
