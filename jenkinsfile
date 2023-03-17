@@ -1,0 +1,60 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage("Limpar")
+        {
+            steps
+            {
+                /* passo 1 - limpar o workspace */
+                cleanWs()
+                /* passo 2 - escrever no log */
+                echo "o workspace foi limpo"
+            }
+        }
+        stage("Git Checkout")
+        {
+            steps
+            {
+                /* passo 3 - aceder ao git */
+                git branch: 'main', changelog: false, poll: false, url: 'https://dev.azure.com/Computencial/Academia2020Pipelines/_git/NetCorFullTesting'
+                /* passo 4 - escrever no log */
+                echo "a solução foi descarregada"
+                
+            }
+        }
+        stage("Restore Lib")
+        {
+            steps
+            {
+                /* passo 5 - LIB dependency restore */
+                dotnetRestore project: 'Lib/Lib.csproj', sdk: '.NET 6'
+                /* passo 6 - escrever no log */
+                echo "dotnet restore"
+            }
+        }
+        stage("Build Lib")
+        {
+            steps
+            {
+                /* passo 7 - build LIB */
+                dotnetBuild configuration: 'Release', project: 'Lib/Lib.csproj', sdk: '.NET 6', showSdkInfo: true, unstableIfWarnings: true
+                /* passo 6 - escrever no log */
+                echo "dotnet build"
+            }
+        }
+        stage("Unit Testing Lib")
+        {
+            steps
+            {
+                /* passo 9 - unit testing LIB */
+                dotnetTest logger: 'trx;LogFileName=testresults.trx', project: 'UnitTesting/UnitTesting.csproj', resultsDirectory: 'TestResults', sdk: '.NET 6', unstableIfWarnings: true
+                /* passo 10 - oublicar resultados dos testes */
+                xunit([MSTest(excludesPattern: '', pattern: 'TestResults/testresults.trx', stopProcessingIfError: true)])
+                 /* passo 11 - escrever no log */
+                echo "unit tests"
+            }
+        }
+    }
+}
