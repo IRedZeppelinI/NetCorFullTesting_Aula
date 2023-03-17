@@ -56,5 +56,87 @@ pipeline
                 echo "unit tests"
             }
         }
+        stage("Restore Web")
+        {
+            steps
+            {
+                /* passo 10 - Web dependency restore */
+                dotnetRestore project: 'WebAppPipeline/WebAppPipeline.csproj', sdk: '.NET 6'
+                /* passo 11 - escrever no log */
+                echo "dotnet restore"
+            }
+        }
+        stage("Build Web")
+        {
+            steps
+            {
+                /* passo 12 - build Web */
+                dotnetBuild configuration: 'Release', project: 'WebAppPipeline/WebAppPipeline.csproj', sdk: '.NET 6', showSdkInfo: true, unstableIfWarnings: true
+                /* passo 13 - escrever no log */
+                echo "dotnet build"
+            }
+        }
+        stage("Functional Testing Web")
+        {
+            steps
+            {
+                /* passo 14 - functional testing WEB */
+                dotnetTest logger: 'trx;LogFileName=functionaltestresults.trx', project: 'FunctionalTesting/FunctionalTesting.csproj', resultsDirectory: 'TestResults', sdk: '.NET 6', unstableIfWarnings: true
+                /* passo 15 - oublicar resultados dos testes */
+                xunit([MSTest(excludesPattern: '', pattern: 'TestResults/functionaltestresults.trx', stopProcessingIfError: true)])
+                 /* passo 16 - escrever no log */
+                echo "functional tests"
+            }
+        }
+        stage("Integration Testing Web")
+        {
+            steps
+            {
+                /* passo 17 - integration testing WEB */
+                dotnetTest logger: 'trx;LogFileName=integrationtestresults.trx', project: 'IntegrationTesting/IntegrationTesting.csproj', resultsDirectory: 'TestResults', sdk: '.NET 6', unstableIfWarnings: true
+                /* passo 18 - publicar resultados dos testes */
+                xunit([MSTest(excludesPattern: '', pattern: 'TestResults/integrationtestresults.trx', stopProcessingIfError: true)])
+                 /* passo 19 - escrever no log */
+                echo "integration tests"
+            }
+        }
+        stage("Publicar Web App")
+        {
+            steps
+            {
+                
+                dotnetPublish configuration: 'Release', outputDirectory: 'Release', project: 'WebAppPipeline/WebAppPipeline.csproj', selfContained: false
+                
+            }
+        }
+        
+        stage("Criar Artefacto")
+        {
+            steps
+            {
+                zip archive: true, dir: 'Release', exclude: '', glob: '', overwrite: true, zipFile: 'WebApp.zip'
+            }
+        }
+        stage("Deploy para Azure")
+        {
+            steps
+            {
+                script
+                {
+                    withCredentials([azureServicePrincipal(
+                        credentialsId:'PIPELINEJENKINS',
+                        subscriptionIdVariable:'SUBS_ID',
+                        clientIdVariable:'CLIENT_ID',
+                        clientSecretVariable:'CLIENT_SECRET',
+                        tenantIdVariable:'TENANT_ID'
+                        )
+                    ])
+                    {
+                        bat label:'',script:'az login --service-principal -u ' + CLIENT_ID + ' -p ' + CLIENT_SECRET + ' -t ' + TENANT_ID
+                        bat label:'',script:'az webapp deployment source config-zip --resource-group 71910 --name jenkinspipleine --src WebApp.zip' 
+                    }
+                }
+            }
+        }
     }
 }
