@@ -14,17 +14,42 @@ variables:
   web: '**/WebAppPipeline/WebAppPipeline.csproj'
   lib: '**/Lib/Lib.csproj'
   buildConfiguration: 'Release'
+  buildPlatform: 'Any CPU'
+  artifactName: 'WebAppRelease'
 
 steps:
 
 - task: NuGetToolInstaller@1
 - task: DotNetCoreCLI@2
+  displayName: Restore Lib Dependecies
   inputs:
-    displayName: Restore Lib Dependecies
     command: 'restore'
     projects: '$(lib)'
 - task: DotNetCoreCLI@2
+  displayName: Build Lib
   inputs:
-    displayName: Build Lib
     command: 'build'
     projects: '$(lib)'
+- task: DotNetCoreCLI@2
+  displayName: Restore Web Dependecies
+  inputs:
+    command: 'restore'
+    projects: '$(web)'
+- task: DotNetCoreCLI@2
+  displayName: Build Web
+  inputs:
+    command: 'build'
+    projects: '$(web)'
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactsStagingDirectory)'
+    zipAfterPublish: true
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactsStagingDirectory)'
+    ArtifactName: '$(artifactName)'
+     
