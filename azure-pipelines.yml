@@ -22,4 +22,9 @@ steps:
   inputs:
     displayName: Restore Lib Dependecies
     command: 'restore'
-    projects: '$(lib)'   
+    projects: '$(lib)'
+- task: DotNetCoreCLI@2
+  inputs:
+    displayName: Build Lib
+    command: 'build'
+    projects: '$(lib)'
