@@ -14,6 +14,8 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   artificat: 'WebApp'
+  azuresubscription: ''
+  webappname: 'demoazurepipelines'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -68,3 +70,12 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: '$(artificat)'
+
+- task: AzureWebApp@1
+  inputs:
+    displayName: Deploy para Azure
+    azureSubscription: '$(azuresubscription)'
+    appType: 'webApp'
+    appName: '$(webappname)'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|6.0'
