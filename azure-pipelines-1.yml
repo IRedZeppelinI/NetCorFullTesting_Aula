@@ -1,0 +1,70 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubunto-latest'
+
+variables:
+  solution: '**/*.sln'
+  lib: '**/Lib/Lib.csproj'
+  web: '**/WebAppPipeline/WebAppPipeline.csproj'
+  unittests: '**/UnitTesting/UnitTesting.csproj'
+  functionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
+  integrationtest: '**/IntegrationTesting/IntegrationTesting.csproj'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  artificat: 'WebApp'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: DotNetCoreCLI@2
+  displayName: Restore Lib Dependecies
+  inputs:
+    command: 'restore'
+    projects: '$(lib)'
+- task: DotNetCoreCLI@2
+  displayName: Build Lib
+  inputs:
+    command: 'build'
+    projects: '$(lib)'
+- task: DotNetCoreCLI@2
+  displayName: Unit tests on Lib
+  inputs:
+    command: 'test'
+    projects: '$(unittests)'
+
+- task: DotNetCoreCLI@2
+  displayName: Restore Web dependencies
+  inputs:
+    command: 'restore'
+    projects: '$(web)'
+
+- task: DotNetCoreCLI@2
+  displayName: Buid Web
+  inputs:
+    command: 'build'
+    projects: '$(web)'
+
+- task: DotNetCoreCLI@2
+  displayName: Functional tests on Web
+  inputs:
+    command: 'test'
+    projects: '$(functionaltests)'
+- task: DotNetCoreCLI@2
+  displayName: Integration tests on Web
+  inputs:
+    command: 'test'
+    projects: '$(integrationtest)'
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(artificat)'
