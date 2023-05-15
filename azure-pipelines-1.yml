@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   artificat: 'WebApp'
-  azuresubscription: ''
+  azuresubscription: 'DeemoAzurePipelines'
   webappname: 'demoazurepipelines'
 
 steps:
