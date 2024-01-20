@@ -71,11 +71,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: '$(artificat)'
 
-- task: AzureWebApp@1
-  inputs:
-    displayName: Deploy para Azure
-    azureSubscription: '$(azuresubscription)'
-    appType: 'webApp'
-    appName: '$(webappname)'
-    package: '$(System.ArtifactsDirectory)/**/*.zip'
-    runtimeStack: 'DOTNETCORE|6.0'
+
