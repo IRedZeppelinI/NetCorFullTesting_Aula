@@ -14,8 +14,8 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   artificat: 'WebApp'
-  azuresubscription: 'RumosPipelineConnection'
-  webappname: 'rumosdevopspipeline'
+  azuresubscription: 'rumoserviceconnection'
+  webappname: 'rumoswebapp'
 
 steps:
 - task: NuGetToolInstaller@1
