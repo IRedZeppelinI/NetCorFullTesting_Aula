@@ -76,6 +76,6 @@ steps:
     displayName: Deploy para Azure
     azureSubscription: '$(azuresubscription)'
     appType: 'webApp'
-    appName: '$(appName)'
+    appName: '$(webappname)'
     package: '$(System.ArtifactsDirectory)/**/*.zip'
     runtimeStack: 'DOTNETCORE|7.0'
