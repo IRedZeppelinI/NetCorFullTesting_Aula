@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   artificat: 'WebApp'
   azuresubscription: 'tkaserviceconnection'
-  webappname: 'tkaapp'
+  webappname: 'webapppipeline20240524013511'
 
 steps:
 - task: NuGetToolInstaller@1
