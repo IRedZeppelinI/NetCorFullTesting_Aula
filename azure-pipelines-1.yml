@@ -13,7 +13,7 @@ variables:
   integrationtest: '**/IntegrationTesting/IntegrationTesting.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  artificat: 'WebApp'
+  artifact: 'WebApp'
   azuresubscription: 'tkaserviceconnection'
   webappname: 'webapppipeline20240524013511'
 
@@ -69,11 +69,11 @@ steps:
   displayName: Publish Artifacts
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: '$(artificat)'
+    ArtifactName: '$(artifact)'
 
 - task: AzureWebApp@1
+  displayName: Deploy para Azure
   inputs:
-    displayName: Deploy para Azure
     azureSubscription: '$(azuresubscription)'
     appType: 'webApp'
     appName: '$(webappname)'
