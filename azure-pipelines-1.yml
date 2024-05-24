@@ -74,7 +74,7 @@ steps:
 - task: AzureWebApp@1
   inputs:
     displayName: Deploy para Azure
-    azureSubscription: '$(azuresubscrition)'
+    azureSubscription: '$(azuresubscription)'
     appType: 'webApp'
     appName: '$(appName)'
     package: '$(System.ArtifactsDirectory)/**/*.zip'
