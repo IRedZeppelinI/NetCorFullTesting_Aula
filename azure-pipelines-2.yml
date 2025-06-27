@@ -22,10 +22,8 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*.csproj' # Altere para o caminho do seu projeto de testes
-    # Coverlet irá gerar um ficheiro XML (OpenCover ou Cobertura) na pasta de output
-    arguments: '/p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
+    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
     # 'opencover' é um formato de XML que ReportGenerator pode ler facilmente.
-
 - task: DotNetCoreCLI@2
   displayName: 'Install ReportGenerator Global Tool'
   inputs:
@@ -41,12 +39,10 @@ steps:
     reportgenerator -reports:"$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:$(Build.SourcesDirectory)/html_coverage_report" -reporttypes:Html
   displayName: 'Generate HTML Coverage Report'
 
-- task: PublishCodeCoverageResults@1
+- task: PublishCodeCoverageResults@2
   displayName: 'Publish Code Coverage Results to Azure DevOps'
   inputs:
-    codeCoverageTool: 'Cobertura' # O formato de tool para o ADO. ReportGenerator pode gerar Cobertura, que é compatível.
-    summaryFileLocation: '$(Build.SourcesDirectory)/coverage/coverage.opencover.xml' # O ficheiro XML da cobertura
-    reportDirectory: '$(Build.SourcesDirectory)/html_coverage_report' # O diretório que contém o index.html gerado
+    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
     # Opcional: Define se a pipeline falha se a cobertura estiver vazia
     # failIfCoverageEmpty: true
     # Opcional: Caminho para a pasta onde os ficheiros de fonte estão (normalmente o root do repositório)
