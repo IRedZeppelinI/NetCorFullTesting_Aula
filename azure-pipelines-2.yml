@@ -22,7 +22,8 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*.csproj' # Altere para o caminho do seu projeto de testes
-    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+    arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+    publishTestResults: true
     # 'opencover' é um formato de XML que ReportGenerator pode ler facilmente.
 - task: DotNetCoreCLI@2
   displayName: 'Install ReportGenerator Global Tool'
