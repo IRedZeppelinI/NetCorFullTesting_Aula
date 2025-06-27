@@ -32,18 +32,11 @@ steps:
     custom: 'tool'
     arguments: 'install -g dotnet-reportgenerator-globaltool --version 5.2.4' # Use a versão mais recente e estável
 
-- script: |
-    # Gere o relatório HTML a partir do XML da cobertura
-    # -reports: o ficheiro XML gerado por Coverlet
-    # -targetdir: o diretório onde o HTML será gerado
-    # -reporttypes: o formato do relatório (Html para o separador de cobertura no ADO)
-    reportgenerator -reports:"$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:$(Build.SourcesDirectory)/html_coverage_report" -reporttypes:Html
-  displayName: 'Generate HTML Coverage Report'
 
 - task: PublishCodeCoverageResults@2
   displayName: 'Publish Code Coverage Results to Azure DevOps'
   inputs:
-    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+    summaryFileLocation: '/home/vsts/work/_temp/**/coverage.cobertura.xml'
     # Opcional: Define se a pipeline falha se a cobertura estiver vazia
     # failIfCoverageEmpty: true
     # Opcional: Caminho para a pasta onde os ficheiros de fonte estão (normalmente o root do repositório)
