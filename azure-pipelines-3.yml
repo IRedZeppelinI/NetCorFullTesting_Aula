@@ -44,3 +44,27 @@ steps:
   inputs:
     command: 'test'
     projects: '$(unittests)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore Web Dependencies'
+  inputs:
+    command: 'restore'
+    projects: '$(web)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Web'
+  inputs:
+    command: 'build'
+    projects: '$(web)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Functional testing Web'
+  inputs:
+    command: 'test'
+    projects: '$(functionaltests)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Intgration testing Web'
+  inputs:
+    command: 'test'
+    projects: '$(integrationtests)'
