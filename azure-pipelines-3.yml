@@ -39,3 +39,8 @@ steps:
     command: 'build'
     projects: '$(lib)'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Unit testing Lib'
+  inputs:
+    command: 'test'
+    projects: '$(unittests)'
