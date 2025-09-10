@@ -17,6 +17,9 @@ variables:
   unittests: '**/UnitTesting/UnitTesting.csproj'
   functionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
   integrationtests: '**/IntegrationTesting/IntegrationTesting.csproj'
+  buildconfiguration: 'Release'
+  builplatform: 'Any CPU'
+  artifactName: 'WebAppRelease'
 
 steps:
 - script: echo Hello, world!
@@ -26,6 +29,8 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+# CI - Continuous Integration
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore Lib Dependencies'
@@ -68,3 +73,21 @@ steps:
   inputs:
     command: 'test'
     projects: '$(integrationtests)'
+
+
+# CI - Continuous Delivery
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildconfiguration) --output $(Build.ArtifactsStagingDirectory)'
+    zipAfterPublish: true
+    projects: '$(integrationtests)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(artifactName)'
+    publishLocation: 'Container'
