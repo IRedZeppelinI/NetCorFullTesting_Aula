@@ -1,0 +1,35 @@
+name: .NET CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubunto-latest
+    env:
+      solution: '**/WebAppPipeline.sln'
+      lib: '**/Lib/Lib.csproj'
+      web: '**/WebAppPipeline/WebAppPipeline.csproj'
+      unittests: '**/UnitTesting/UnitTesting.csproj'
+      funtionaltests: '**/FunctionalTesting/FunctionalTesting.csproj'
+      integrationtest: '**/IntegrationTesting/IntegrationTesting.csproj'
+      buildconfiguration: 'Release'
+      artifactName: 'WebAppRelease'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.4'
+          
+      - name: Restore Lib Dependencies
+        run: dotnet restore ${{env.lib}}
+
+      - name: Build Lib
+        run: dotnet build  ${{env.lib}} --configuration ${{env.buildconfiguration}}
+        
