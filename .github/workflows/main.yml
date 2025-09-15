@@ -32,4 +32,25 @@ jobs:
 
       - name: Build Lib
         run: dotnet build  ${{env.lib}} --configuration ${{env.buildconfiguration}}
+
+      - name: Unit Testing Lib
+        run: dotnet test ${{ env.unittests }}  --configuration ${{ env.buildconfiguration }}
+ 
+      - name: Restore Web Dependecies
+        run: dotnet restore ${{ env.web }}
+ 
+      - name: Function Testing Lib
+        run: dotnet test ${{ env.functionaltests }}  --configuration ${{ env.buildconfiguration }}
+ 
+      - name: Integration Testing Lib
+        run: dotnet test ${{ env.integrationtest }}  --configuration ${{ env.buildconfiguration }}
+ 
+      - name: Publish Web
+        run: dotnet publish ${{ env.web }}  --configuration ${{ env.buildconfiguration }} --output ./publish
+ 
+      - name: UploadArtifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.artifactName }}
+          path: ./publish
         
